@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Upload(props) {
   const [content, setContent] = useState("");
@@ -9,6 +9,12 @@ function Upload(props) {
     props.setContentList([...tempArr]);
     setContent("");
   };
+  useEffect(() => {
+    // 컴포넌트가 나타날 때 실행될 코드
+    return () => {
+      // 컴포넌트가 죽을 때 실행될 코드
+    };
+  }, []);
   return (
     <div>
       <input
