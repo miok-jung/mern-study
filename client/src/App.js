@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Test from "./Test";
 import Heading from "./Component/Heading";
 import List from "./Component/List";
 import Upload from "./Component/Upload";
