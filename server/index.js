@@ -32,10 +32,14 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html")); // 상대경로 입력, 현재경로는 __dirname을 쓸 수 있다.
 });
-app.post("/api/test", (req, res) => {
-  // console.log(req.body);
-  const CommunityPost = new Post({ title: "Test", content: "테스트입니다." });
-  CommunityPost.save().then(() => {
-    res.status(200).json({ success: true, text: "안녕하세요" });
-  });
+app.post("/api/post/submit", (req, res) => {
+  let temp = req.body;
+  const CommunityPost = new Post(temp);
+  CommunityPost.save()
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
+    });
 });

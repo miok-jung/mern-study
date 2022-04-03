@@ -24,10 +24,7 @@ function Heading() {
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link
-                to="/list"
-                style={{ color: "white", textDecoration: "none" }}
-              >
+              <Link to="/" style={{ color: "white", textDecoration: "none" }}>
                 list
               </Link>
             </Nav.Link>
