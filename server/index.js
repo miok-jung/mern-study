@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html")); // 상대경로 입력, 현재경로는 __dirname을 쓸 수 있다.
 });
+
 app.post("/api/post/submit", (req, res) => {
   let temp = req.body;
   const CommunityPost = new Post(temp);
@@ -41,5 +42,17 @@ app.post("/api/post/submit", (req, res) => {
     })
     .catch((err) => {
       res.status(400).json({ success: false });
+    });
+});
+
+app.post("/api/post/list", (req, res) => {
+  // find document
+  Post.find()
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, postList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false, err });
     });
 });

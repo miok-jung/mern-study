@@ -1,38 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import { ListDiv, ListItem } from "../../Style/ListCSS";
 
-function List(props) {
-  const [text, setText] = useState("");
+const List = () => {
+  const [postList, setPostList] = useState([]);
   useEffect(() => {
-    let body = {
-      text: "Hello",
-    };
     axios
-      .post("/api/test", body)
-      .then((response) => {
-        console.log(response);
-        setText(response.data.text);
+      .post("/api/post/list")
+      .then((res) => {
+        if (res.data.success) {
+          setPostList([...res.data.postList]);
+        }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
   return (
-    <div>
-      <h3>List!</h3>
-      <h3>{text}</h3>
-      {props.contentList.map((content, idx) => {
+    <ListDiv>
+      {postList.map((post, idx) => {
         return (
-          <div key={idx} style={{ width: "100%", marginLeft: "1rem" }}>
-            내용 : {content}
+          <ListItem key={idx}>
+            <p className="title">{post.title}</p>
+            <p>{post.content}</p>
             <hr />
-          </div>
+          </ListItem>
         );
       })}
       <Button>Test!</Button>
-    </div>
+    </ListDiv>
   );
-}
+};
 
 export default List;

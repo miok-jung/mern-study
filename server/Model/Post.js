@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema(
     title: String,
     content: String,
   },
-  { collation: "posts" }
+  { collection: "posts" }
 );
 
 const Post = mongoose.model("Post", postSchema);
