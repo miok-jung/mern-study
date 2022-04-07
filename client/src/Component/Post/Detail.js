@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import { Spinner } from "react-bootstrap";
+import { PostDiv, SpinnerDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
 
 const Detail = () => {
   // Route path에서 사용된 변수값을 가져온다.
@@ -32,17 +32,24 @@ const Detail = () => {
     console.log("p", postInfo);
   }, [postInfo]);
   return (
-    <div>
+    <PostDiv>
       {flag ? (
-        <div>
-          {postInfo.title}, {postInfo.content}
-        </div>
+        <>
+          <Post>
+            <h1>{postInfo.title}</h1>
+            <p>{postInfo.content}</p>
+          </Post>
+          <BtnDiv>
+            <button className="edit">수정</button>
+            <button className="delete">삭제</button>
+          </BtnDiv>
+        </>
       ) : (
-        <Spinner animation="border" role="status">
+        <SpinnerDiv animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        </SpinnerDiv>
       )}
-    </div>
+    </PostDiv>
   );
 };
 
