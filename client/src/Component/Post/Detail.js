@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 import { PostDiv, SpinnerDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
@@ -40,7 +40,9 @@ const Detail = () => {
             <p>{postInfo.content}</p>
           </Post>
           <BtnDiv>
-            <button className="edit">수정</button>
+            <Link to={`/edit/${postInfo.postNum}`}>
+              <button className="edit">수정</button>
+            </Link>
             <button className="delete">삭제</button>
           </BtnDiv>
         </>

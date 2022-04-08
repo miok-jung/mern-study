@@ -82,3 +82,18 @@ app.post("/api/post/detail", (req, res) => {
       res.status(400).json({ success: false, err });
     });
 });
+
+app.post("/api/post/edit", (req, res) => {
+  let temp = {
+    title: req.body.title,
+    content: req.body.content,
+  };
+  Post.updateOne({ postNum: Number(req.body.postNum) }, { $set: temp })
+    .exec()
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false, err });
+    });
+});

@@ -5,6 +5,7 @@ import Heading from "./Component/Heading";
 import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
 import Detail from "./Component/Post/Detail";
+import Edit from "./Component/Post/Edit";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/upload" element={<Upload />} />
         {/* 콜론(:)은 변수설정 */}
         <Route path="/post/:postNum" element={<Detail />} />
+        <Route path="/edit/:postNum" element={<Edit />} />
       </Routes>
     </>
   );
