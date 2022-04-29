@@ -5,6 +5,8 @@ const multer = require("multer"); // NOTE 파일을 업로드를 위해 사용�
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
 
+const setUpload = require("../Util/upload");
+
 router.post("/submit", (req, res) => {
   let temp = req.body;
   // fint({중괄호 안에는 조건문을 넣을 수 있다.})
@@ -81,28 +83,32 @@ router.post("/delete", (req, res) => {
 });
 
 // NOTE 파일 업로드
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "image/");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + "-" + file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "image/");
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+//     cb(null, uniqueSuffix + "-" + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage }).single("file");
-router.post("/image/upload", (req, res) => {
-  // console.log(req.body, req.formData);
-  upload(req, res, (err) => {
-    if (err) {
-      // res.status(400).json({ success: false });
-      console.log(err);
-    } else {
-      // console.log(res.req.file);
-      res.status(200).json({ success: true, filePath: res.req.file.path });
-    }
-  });
+// const upload = multer({ storage: storage }).single("file");
+// router.post("/image/upload", (req, res) => {
+//   // console.log(req.body, req.formData);
+//   upload(req, res, (err) => {
+//     if (err) {
+//       // res.status(400).json({ success: false });
+//       console.log(err);
+//     } else {
+//       // console.log(res.req.file);
+//       res.status(200).json({ success: true, filePath: res.req.file.path });
+//     }
+//   });
+// });
+
+router.post("/image/upload", setUpload("mern-study/post"), (req, res) => {
+  res.status(200).json({ success: true, filePath: res.req.file.location });
 });
 
 module.exports = router;

@@ -59,7 +59,7 @@ const Detail = () => {
             <h1>{postInfo.title}</h1>
             {postInfo.image ? (
               <img
-                src={`http://localhost:5000/${postInfo.image}`}
+                src={postInfo.image}
                 style={{ width: "100%", height: "auto" }}
               />
             ) : null}
