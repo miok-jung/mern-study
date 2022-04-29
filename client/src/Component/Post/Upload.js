@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS";
 import axios from "axios";
+import ImageUpload from "./ImageUpload";
 
 function Upload(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [img, setImg] = useState("");
 
   let navigate = useNavigate();
 
@@ -17,6 +19,7 @@ function Upload(props) {
     let body = {
       title: title,
       content: content,
+      image: img,
     };
     axios
       .post("/api/post/submit", body)
@@ -45,6 +48,7 @@ function Upload(props) {
             setTitle(e.currentTarget.value);
           }}
         />
+        <ImageUpload setImg={setImg} />
         <label htmlFor="content">내용</label>
         <textarea
           id="content"
