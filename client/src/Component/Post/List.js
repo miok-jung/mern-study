@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import axios from "axios";
 import { ListDiv, ListItem } from "../../Style/ListCSS";
 import { Link } from "react-router-dom";
@@ -31,7 +30,6 @@ const List = () => {
           </ListItem>
         );
       })}
-      <Button>Test!</Button>
     </ListDiv>
   );
 };
