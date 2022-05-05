@@ -57,7 +57,7 @@ const Login = () => {
             setPassword(e.currentTarget.value);
           }}
         />
-        {ErrorMsg != "" && <p>{ErrorMsg}</p>}
+        {ErrorMsg !== "" && <p>{ErrorMsg}</p>}
         <button onClick={(e) => SignInFunc(e)}>로그인</button>
         <button
           onClick={(e) => {
