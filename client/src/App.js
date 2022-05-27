@@ -7,6 +7,7 @@ import firebase from "./firebase";
 import Heading from "./Component/Heading";
 import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
+import PostArea from "./Component/Post/PostArea";
 import Detail from "./Component/Post/Detail";
 import Edit from "./Component/Post/Edit";
 import Login from "./Component/User/Login";
@@ -37,7 +38,7 @@ const App = () => {
         <Route path="/" element={<List />} />
         <Route path="/upload" element={<Upload />} />
         {/* 콜론(:)은 변수설정 */}
-        <Route path="/post/:postNum" element={<Detail />} />
+        <Route path="/post/:postNum" element={<PostArea />} />
         <Route path="/edit/:postNum" element={<Edit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
