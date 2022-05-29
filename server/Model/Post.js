@@ -12,6 +12,10 @@ const postSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    repleNum: {
+      type: Number,
+      default: 0,
+    },
   },
   { collection: "posts" }
 );

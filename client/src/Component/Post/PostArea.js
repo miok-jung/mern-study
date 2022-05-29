@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Detail from "./Detail";
+import RepleArea from "../Reple/RepleArea";
 import { SpinnerDiv } from "../../Style/PostDetailCSS";
 
 const PostArea = () => {
@@ -30,6 +31,7 @@ const PostArea = () => {
     <div>
       {Flag ? (
         <Detail postInfo={postInfo} />
+        <RepleArea />
       ) : (
         <SpinnerDiv animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
