@@ -30,8 +30,10 @@ const PostArea = () => {
   return (
     <div>
       {Flag ? (
-        <Detail postInfo={postInfo} />
-        <RepleArea />
+        <>
+          <Detail postInfo={postInfo} />
+          <RepleArea postId={postInfo._id} />
+        </>
       ) : (
         <SpinnerDiv animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
