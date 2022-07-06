@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { RepleListDiv } from "../../Style/RepleCSS";
+import RepleContent from "./RepleContent";
 
 const RepleList = (props) => {
   const [repleList, setRepleList] = useState([]);
@@ -15,11 +17,11 @@ const RepleList = (props) => {
     });
   }, []);
   return (
-    <div>
+    <RepleListDiv>
       {repleList.map((reple, idx) => {
-        return <div key={idx}>{reple.reple}</div>;
+        return <RepleContent key={idx} reple={reple} />;
       })}
-    </div>
+    </RepleListDiv>
   );
 };
 
