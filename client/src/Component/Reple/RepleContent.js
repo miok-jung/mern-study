@@ -33,6 +33,27 @@ const RepleContent = (props) => {
       }
     });
   };
+
+  const DeleteHandler = (e) => {
+    e.preventDefault();
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      let body = {
+        postNum: props.reple.postNum,
+        repleId: props.reple._id,
+      };
+      axios
+        .post("/api/reple/delete", body)
+        .then((res) => {
+          if (res.data.success) {
+            alert("댓글이 삭제되었습니다.");
+            window.location.reload();
+          }
+        })
+        .catch((err) => {
+          alert("댓글 삭제에 실패하였습니다.");
+        });
+    }
+  };
   return (
     <div>
       <RepleContentDiv>
@@ -58,7 +79,14 @@ const RepleContent = (props) => {
                   >
                     수정
                   </p>
-                  <p className="delete">삭제</p>
+                  <p
+                    className="delete"
+                    onClick={(e) => {
+                      DeleteHandler(e);
+                    }}
+                  >
+                    삭제
+                  </p>
                 </div>
               )}
             </div>
